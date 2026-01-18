@@ -3,90 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dex Tools Web v2 • Live Crypto Tools</title>
-  <meta name="description" content="Real-time DEX tools, token info, charts & more"/>
+  <title>DEX-SHYAM-HA4KR TOOLS • Official Toolkit V2</title>
   
-  <!-- Favicon (optional – পরে নিজেরটা যোগ করতে পারো) -->
-  <link rel="icon" href="https://dexscreener.com/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:#0a0015;
+      color:#00ff9d;
+      font-family:'Orbitron', sans-serif;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
+    
+    canvas#matrix {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:1;
+      pointer-events:none;
+      opacity:0.5;
+    }
+    
+    .content {
+      position:relative;
+      z-index:10;
+      padding:20px;
+      max-width:1400px;
+      margin:0 auto;
+    }
+    
+    header {
+      text-align:center;
+      padding:40px 0 30px;
+    }
+    
+    h1 {
+      font-size:4.2rem;
+      background: linear-gradient(90deg, #00ff9d, #ff00ff, #00ffff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 20px rgba(0,255,157,0.7);
+      animation:glow 3s infinite alternate;
+    }
+    
+    .subtitle {
+      font-size:1.6rem;
+      color:#00ffff;
+      margin:10px 0 25px;
+      font-family:'VT323', monospace;
+    }
+    
+    .wa-btn {
+      display:inline-block;
+      padding:14px 35px;
+      background:rgba(0,255,157,0.15);
+      border:2px solid #00ff9d;
+      color:#00ff9d;
+      text-decoration:none;
+      font-size:1.5rem;
+      border-radius:8px;
+      margin:15px 0;
+      transition:0.4s;
+    }
+    
+    .wa-btn:hover {
+      background:#00ff9d;
+      color:#000;
+      box-shadow:0 0 25px #00ff9d;
+    }
+    
+    .search-container {
+      text-align:center;
+      margin:40px 0;
+    }
+    
+    input[type="text"] {
+      width:80%;
+      max-width:700px;
+      padding:18px;
+      font-size:1.7rem;
+      background:rgba(0,0,0,0.6);
+      border:2px solid #ff00ff;
+      color:#00ffff;
+      font-family:'VT323', monospace;
+      border-radius:10px;
+      box-shadow:0 0 15px rgba(255,0,255,0.4);
+    }
+    
+    .categories {
+      text-align:center;
+      margin:30px 0;
+    }
+    
+    .cat-btn {
+      padding:10px 25px;
+      margin:8px;
+      background:transparent;
+      border:2px solid #00ffff;
+      color:#00ffff;
+      font-size:1.3rem;
+      border-radius:30px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    
+    .cat-btn.active, .cat-btn:hover {
+      background:#00ffff;
+      color:#000;
+    }
+    
+    .tools-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+      gap:20px;
+      margin:40px 0;
+    }
+    
+    .tool-card {
+      background:rgba(10, 0, 30, 0.6);
+      border:1px solid #00ff9d44;
+      border-radius:12px;
+      padding:20px 10px;
+      text-align:center;
+      transition:0.4s;
+      backdrop-filter:blur(5px);
+      cursor:pointer;
+    }
+    
+    .tool-card:hover {
+      transform:translateY(-8px);
+      border-color:#00ff9d;
+      box-shadow:0 0 25px rgba(0,255,157,0.5);
+    }
+    
+    .tool-icon {
+      font-size:3.5rem;
+      margin-bottom:12px;
+      color:#ff00ff;
+      text-shadow:0 0 10px #ff00ff88;
+    }
+    
+    .tool-name {
+      font-size:1.1rem;
+      color:#00ffff;
+    }
+    
+    footer {
+      text-align:center;
+      padding:60px 0 30px;
+      color:#555;
+      font-size:1.1rem;
+    }
+    
+    .online-status {
+      position:fixed;
+      bottom:20px;
+      right:30px;
+      background:rgba(0,255,0,0.2);
+      border:2px solid #00ff00;
+      color:#00ff00;
+      padding:10px 20px;
+      border-radius:30px;
+      font-family:'VT323', monospace;
+      font-size:1.4rem;
+      box-shadow:0 0 15px #00ff0088;
+    }
+    
+    @keyframes glow {
+      from { text-shadow:0 0 10px #00ff9d, 0 0 20px #ff00ff; }
+      to   { text-shadow:0 0 20px #00ff9d, 0 0 40px #ff00ff; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header / Navbar -->
+
+<canvas id="matrix"></canvas>
+
+<div class="content">
+
   <header>
-    <div class="container header-flex">
-      <h1 class="logo">DexTools <span>v2</span></h1>
-      
-      <nav>
-        <ul>
-          <li><a href="#" class="active">Home</a></li>
-          <li><a href="#">Tokens</a></li>
-          <li><a href="#">Pairs</a></li>
-          <li><a href="#">Charts</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>DEX-SHYAM-HA4KR TOOLS</h1>
+    <div class="subtitle">Welcome to Official Hacker Toolkit V2 • Developed by DEX-SHYAM-HA4KR</div>
+    
+    <a href="https://chat.whatsapp.com/IOEbmfzOD6d9TCjdX5Fi3B" target="_blank" class="wa-btn">
+      Join WhatsApp Group 🔥
+    </a>
   </header>
 
-  <!-- Main Hero Section -->
-  <main class="container">
-    <section class="hero">
-      <h2>Explore the Decentralized World</h2>
-      <p class="subtitle">Real-time token data, charts, trending pairs & advanced tools</p>
-      
-      <div class="search-box">
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Search token address / name / symbol..." 
-          autocomplete="off"
-        />
-        <button id="searchBtn">Search</button>
-      </div>
-      
-      <p class="status" id="status">Ready to fetch data...</p>
-    </section>
+  <div class="search-container">
+    <input type="text" placeholder="Search Tools... (Token | WhatsApp | Hacker | AI)" id="searchInput">
+  </div>
 
-    <!-- Result / Info Card (script.js এখানে আপডেট করবে) -->
-    <section class="result-card hidden" id="resultCard">
-      <div class="card-header">
-        <h3 id="tokenName">Token Name</h3>
-        <span id="tokenSymbol" class="symbol"></span>
-      </div>
-      
-      <div class="stats-grid">
-        <div class="stat">
-          <span class="label">Price</span>
-          <span class="value" id="price">$0.00</span>
-        </div>
-        <div class="stat">
-          <span class="label">Liquidity</span>
-          <span class="value" id="liquidity">$0</span>
-        </div>
-        <div class="stat">
-          <span class="label">Volume 24h</span>
-          <span class="value" id="volume">$0</span>
-        </div>
-        <div class="stat">
-          <span class="label">MCap</span>
-          <span class="value" id="mcap">$0</span>
-        </div>
-      </div>
-      
-      <button id="soundBtn" class="sound-btn">Play Sci-Fi Click 🔊</button>
-    </section>
+  <div class="categories">
+    <button class="cat-btn active">All</button>
+    <button class="cat-btn">Social</button>
+    <button class="cat-btn">Tools For Developers</button>
+    <button class="cat-btn">Coming Soon</button>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-      <p>© 2026 Dex Tools v2 • Made with ❤️ in Murshidabad</p>
-    </footer>
-  </main>
+  <div class="tools-grid">
+    <!-- এখানে তোমার tools গুলো যোগ করো - icon emoji দিয়ে -->
+    <div class="tool-card"><div class="tool-icon">📖</div><div class="tool-name">Quran Recitation</div></div>
+    <div class="tool-card"><div class="tool-icon">📧</div><div class="tool-name">Temp Mail Pro</div></div>
+    <div class="tool-card"><div class="tool-icon">🇵🇰</div><div class="tool-name">Pak Sim Data</div></div>
+    <div class="tool-card"><div class="tool-icon">🛠️</div><div class="tool-name">FTGM Editor</div></div>
+    <div class="tool-card"><div class="tool-icon">💻</div><div class="tool-name">Full Site Hacker</div></div>
+    <div class="tool-card"><div class="tool-icon">📱</div><div class="tool-name">WhatsApp Unban Tool</div></div>
+    <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">WhatsApp BOT</div></div>
+    <div class="tool-card"><div class="tool-icon">📺</div><div class="tool-name">Live Channels</div></div>
+    <div class="tool-card"><div class="tool-icon">⬇️</div><div class="tool-name">Reels Downloader</div></div>
+    <div class="tool-card"><div class="tool-icon">📥</div><div class="tool-name">FB Downloader</div></div>
+    <div class="tool-card"><div class="tool-icon">🎬</div><div class="tool-name">CapCut Pro</div></div>
+    <div class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Link Shortener</div></div>
+    <div class="tool-card"><div class="tool-icon">🖼️</div><div class="tool-name">Thumbnail Saver</div></div>
+    <!-- আরও যত ইচ্ছা টুল কার্ড যোগ করো -->
+    <div class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Dollar To PKR</div></div>
+    <div class="tool-card"><div class="tool-icon">🔍</div><div class="tool-name">Search Image</div></div>
+    <div class="tool-card"><div class="tool-icon">🛠️</div><div class="tool-name">Modding Tools</div></div>
+    <div class="tool-card"><div class="tool-icon">⏳</div><div class="tool-name">Coming Soon</div></div>
+  </div>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
-  <script src="index.js"></script> <!-- যদি extra logic এখানে থাকে -->
+  <div class="online-status">● 47K Online • System Active</div>
 
-  <!-- Optional: Audio element for sci-fi click -->
-  <audio id="clickSound" src="mixkit-sci-fi-click.wav" preload="auto"></audio>
+  <footer>
+    © 2026 DEX-SHYAM-HA4KR TOOLS • Developed by Dex Shyam Chaudhari (Siliguri)<br>
+    All Rights Reserved • Join Our WhatsApp for Updates
+  </footer>
+
+</div>
+
+<audio id="hackerClick" src="mixkit-sci-fi-click.wav" preload="auto"></audio>
+
+<script>
+// Matrix Rain Effect
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const chars = '01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = Array(Math.floor(columns)).fill(1);
+
+function draw() {
+  ctx.fillStyle = 'rgba(10, 0, 21, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.fillStyle = '#00ff9d';
+  ctx.font = fontSize + 'px VT323';
+  
+  for(let i = 0; i < drops.length; i++) {
+    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+    const x = i * fontSize;
+    const y = drops[i] * fontSize;
+    
+    ctx.fillText(text, x, y);
+    
+    if(y > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 35);
+
+// Resize canvas on window resize
+window.addEventListener('resize', () => {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+});
+</script>
+
+<script src="script.js"></script> <!-- তোমার আগের JS যদি থাকে -->
+
 </body>
-Siligurii
+</html>
