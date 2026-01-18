@@ -3,13 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dex Tools Web v2</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Dex Tools Web v2 • Live Crypto Tools</title>
+  <meta name="description" content="Real-time DEX tools, token info, charts & more"/>
+  
+  <!-- Favicon (optional – পরে নিজেরটা যোগ করতে পারো) -->
+  <link rel="icon" href="https://dexscreener.com/favicon.ico" type="image/x-icon"/>
+  
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <h1>Hello from Dex Tools Web v2!</h1>
-  <p>এটা কাজ করছে! 🎉</p>
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container header-flex">
+      <h1 class="logo">DexTools <span>v2</span></h1>
+      
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Tokens</a></li>
+          <li><a href="#">Pairs</a></li>
+          <li><a href="#">Charts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Main Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <h2>Explore the Decentralized World</h2>
+      <p class="subtitle">Real-time token data, charts, trending pairs & advanced tools</p>
+      
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search token address / name / symbol..." 
+          autocomplete="off"
+        />
+        <button id="searchBtn">Search</button>
+      </div>
+      
+      <p class="status" id="status">Ready to fetch data...</p>
+    </section>
+
+    <!-- Result / Info Card (script.js এখানে আপডেট করবে) -->
+    <section class="result-card hidden" id="resultCard">
+      <div class="card-header">
+        <h3 id="tokenName">Token Name</h3>
+        <span id="tokenSymbol" class="symbol"></span>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="label">Price</span>
+          <span class="value" id="price">$0.00</span>
+        </div>
+        <div class="stat">
+          <span class="label">Liquidity</span>
+          <span class="value" id="liquidity">$0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Volume 24h</span>
+          <span class="value" id="volume">$0</span>
+        </div>
+        <div class="stat">
+          <span class="label">MCap</span>
+          <span class="value" id="mcap">$0</span>
+        </div>
+      </div>
+      
+      <button id="soundBtn" class="sound-btn">Play Sci-Fi Click 🔊</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Dex Tools v2 • Made with ❤️ in Murshidabad</p>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
+  <script src="index.js"></script> <!-- যদি extra logic এখানে থাকে -->
+
+  <!-- Optional: Audio element for sci-fi click -->
+  <audio id="clickSound" src="mixkit-sci-fi-click.wav" preload="auto"></audio>
 </body>
-</html>
+Siligurii
