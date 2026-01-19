@@ -1,208 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DEX-SHYAM-HA4KR TOOLS • Official Hacker Toolkit V10</title>
-  <meta name="description" content="100+ Free Tools for Hacking, Social, Dev & More • Developed by DEX SHYAM CHAUDHARI"/>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <title>DEX TOOLS | BEST TOOLKIT</title>
+  <meta name="description" content="DEX Tools - Comprehensive toolkit for developers, social media tools, and utilities. DEXTOOLS provides DEX toolkit, DEX hacks, and premium tools by Dex Shyam Chaudhari.">
+  <meta name="keywords" content="dex, dextools, dextoolkit, DEX, DEX HACKS, dex toolkit, dextool, DEX Tools, DEX Hacks, dex hacks, Dex Shyam Chaudhari, dex tools kit">
+  <meta name="author" content="Dex Shyam Chaudhari | DEX HACKS">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="DEX Tools - Ultimate Toolkit">
+  <meta property="og:description" content="Comprehensive toolkit for developers and social media tools">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ftgmtools.com">
+  <meta property="og:image" content="https://i.ibb.co/9kVdBRny/1768745328585.png">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Nova+Square&family=Kanit&family=Baumans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: linear-gradient(180deg, #0a0015 0%, #1a0030 100%);
-      color:#00ff9d;
-      font-family:'Orbitron', sans-serif;
-      overflow-x:hidden;
-      min-height:100vh;
-      position:relative;
-    }
-
-    canvas#matrix { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.5; pointer-events:none; }
-
-    .container { max-width:1400px; margin:0 auto; padding:20px; }
-
-    header { text-align:center; padding:40px 0; }
-    h1 { font-size:4rem; color:#00ffff; text-shadow:0 0 20px #00ffff; animation:glow 3s infinite alternate; }
-    .subtitle { font-size:1.5rem; color:#00ff9d; margin:10px 0; font-family:'VT323', monospace; }
-
-    .search-container { text-align:center; margin:30px 0; }
-    #searchInput { width:90%; max-width:600px; padding:15px; background:rgba(0,0,0,0.8); border:2px solid #00ffff; color:#00ff9d; border-radius:10px; font-size:1.2rem; box-shadow:0 0 15px #00ffff66; }
-
-    .categories { text-align:center; margin:20px 0; }
-    .cat-btn { padding:10px 25px; margin:5px; background:transparent; border:2px solid #00ffff; color:#00ffff; border-radius:30px; cursor:pointer; transition:0.3s; font-size:1.1rem; }
-    .cat-btn.active, .cat-btn:hover { background:#00ffff; color:#000; }
-
-    .tool-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:20px; margin:40px 0; }
-    .tool-card { background:rgba(0,0,0,0.6); border:2px solid #00ffff44; border-radius:15px; padding:15px; text-align:center; transition:0.4s; cursor:pointer; box-shadow:0 0 15px #00ffff33; }
-    .tool-card:hover { transform:scale(1.05); box-shadow:0 0 30px #00ffff; }
-    .tool-icon { width:80px; height:80px; margin-bottom:10px; border-radius:10px; }
-    .tool-name { font-size:1rem; color:#00ff9d; font-family:'VT323', monospace; }
-
-    .online-status { text-align:center; margin:40px 0; font-size:1.2rem; color:#00ff00; }
-    .status-dot { background:#00ff00; border-radius:50%; width:10px; height:10px; display:inline-block; margin:0 5px; animation:blink 1s infinite; }
-    @keyframes blink { 50% { opacity:0.5; } }
-
-    .access-btn { display:block; width:max-content; margin:0 auto; padding:15px 40px; background:#00ff00; color:#000; border:none; border-radius:30px; font-size:1.4rem; cursor:pointer; box-shadow:0 0 20px #00ff0066; transition:0.3s; }
-    .access-btn:hover { background:#00cc00; }
-
-    .comment-section { background:rgba(0,0,0,0.7); padding:30px; border-radius:15px; margin:50px auto; max-width:600px; }
-    .comment-section h3 { color:#00ffff; margin-bottom:20px; }
-    .comment-input { width:100%; padding:10px; margin:10px 0; background:rgba(0,0,0,0.5); border:1px solid #00ffff; color:#00ff9d; border-radius:5px; }
-    .submit-btn { padding:10px 20px; background:#00ffff; color:#000; border:none; border-radius:5px; cursor:pointer; }
-
-    footer { text-align:center; padding:20px; color:#777; font-size:1rem; }
-
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center; }
-    .modal-content { background:rgba(10,0,30,0.9); padding:40px; border-radius:20px; text-align:center; box-shadow:0 0 40px #00ffff; }
-    .modal h2 { color:#00ffff; }
-    .modal p { color:#00ff9d; }
-    .modal button { padding:12px 30px; margin:10px; border:none; border-radius:10px; cursor:pointer; }
-    .modal .join-btn { background:#00ffff; color:#000; }
-    .modal .close-btn { background:#ff00ff; color:#000; }
-
-    @keyframes glow { from { text-shadow:0 0 10px #00ffff; } to { text-shadow:0 0 30px #00ffff; } }
-  </style>
+  
+  
+  <link rel="icon" type="image/png" href="https://i.ibb.co/9kVdBRny/1768745328585.png">
+  
+  
+  <link rel="stylesheet" href="style.css">
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DEX Tools",
+    "description": "Over 36+ Best Free Tools Collection For Everyone And Special For Developers. All In One Toolkit.",
+    "url": "https://ftgmtools.pages.dev",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Dex Shyam Chaudhari",
+      "url": "https://ftgmtools.pages.dev"
+    },
+    "keywords": "dex, dextools, dextoolkit, DEX HACKS, dex toolkit"
+  }
+  </script>
 </head>
 <body>
+  
+  <div class="wave-bg"><div class="wave"></div></div>
 
-<canvas id="matrix"></canvas>
+  
+  <div class="container">
+    
+    <header>
+      <h1 class="title"><span>DEX</span> <span>TOOLS</span></h1>
+      <p class="subtitle" id="mainSubtitle">Developed By Dex Shyam Chaudhari | DEX HACKS</p>
+    </header>
 
-<div class="container">
-  <header>
-    <h1>DEX-SHYAM-HA4KR TOOLS</h1>
-    <div class="subtitle">Welcome To Our Official Toolkit V10</div>
-  </header>
+  
+    <section class="search-container" aria-label="Search Tools">
+      <div id="poda">
+        <div class="glow"></div>
+        <div class="darkBorderBg"></div>
+        <div class="darkBorderBg"></div>
+        <div class="darkBorderBg"></div>
+        <div class="white"></div>
+        <div class="border"></div>
+        <div id="main">
+          <input placeholder="Search Tools" type="text" name="text" class="input" id="searchInput" aria-label="Search" />
+          <div id="input-mask"></div>
+          <div id="pink-mask"></div>
+          <div id="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" height="20" fill="none" class="feather feather-search">
+              <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
+              <line stroke="url(#searchl)" y2="16.65" y1="22" x2="16.65" x1="22"></line>
+              <defs>
+                <linearGradient gradientTransform="rotate(50)" id="search">
+                  <stop stop-color="#f8e7f8" offset="0%"></stop>
+                  <stop stop-color="#b6a9b7" offset="50%"></stop>
+                </linearGradient>
+                <linearGradient id="searchl">
+                  <stop stop-color="#b6a9b7" offset="0%"></stop>
+                  <stop stop-color="#837484" offset="50%"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search Tools">
-  </div>
+    
+    <nav class="filters" aria-label="Tool Categories">
+      <button class="filter-btn active" data-filter="all" aria-label="Show all tools"><i class="fas fa-globe"></i> All</button>
+      <button class="filter-btn" data-filter="social" aria-label="Social media tools"><i class="fas fa-share-alt"></i> Social</button>
+      <button class="filter-btn" data-filter="dev" aria-label="Developer tools"><i class="fas fa-code"></i> Tools For Developers</button>
+    </nav>
 
-  <div class="categories">
-    <button class="cat-btn active">All</button>
-    <button class="cat-btn">Social</button>
-    <button class="cat-btn">Tools For Developers</button>
-  </div>
+    
+    <main>
+      <div class="tool-grid" id="tools" role="grid" aria-label="DEX Tools Collection"></div>
+    </main>
 
-  <div class="tool-grid">
-    <!-- Tool Cards with Image Icons (FTGM-এর মতো) – name fit করা, link add করার placeholder -->
-    <div class="tool-card" onclick="openToolLink('https://example.com/quran')">
-      <img class="tool-icon" src="https://example.com/quran-icon.png" alt="Quran">
-      <div class="tool-name">Quran Recitation</div>
+    <!-- Statistics -->
+    <section class="stats-container" aria-label="Statistics">
+      <div class="stat-box">
+        <i class="fas fa-eye stat-icon"></i>
+        <div class="stat-value" id="viewsCount">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="online-indicator">
+          <div class="online-dot"></div>
+          <div class="online-text">System Online</div>
+        </div>
+      </div>
+    </section>
+
+   
+    <div id="popup-overlay" class="popup-overlay">
+      <div class="glass-popup">
+        <h2 id="popup-title">DEX Tools Premium</h2>
+        <p id="popup-message">Unlock the full potential of DEX toolkit with premium features and exclusive access.</p>
+        <div class="glass-popup-buttons">
+          <button class="glass-popup-btn glass-popup-primary" id="popup-btn1">Get Premium</button>
+          <button class="glass-popup-btn glass-popup-secondary" id="popup-close-btn">Close</button>
+        </div>
+      </div>
     </div>
-    <div class="tool-card" onclick="openToolLink('https://example.com/temp-mail')">
-      <img class="tool-icon" src="https://example.com/mail-icon.png" alt="Temp Mail">
-      <div class="tool-name">Temp Mail</div>
+
+    <div id="ad-popup-overlay" class="bottom-popup-overlay">
+      <div class="bottom-popup ad-popup">
+        <h2 id="ad-popup-title">Special Offer</h2>
+        <p id="ad-popup-description">Check out our latest DEX tools features and updates!</p>
+        <div class="bottom-popup-buttons">
+          <button class="bottom-popup-btn bottom-popup-primary" id="ad-load-btn">More Details</button>
+          <button class="bottom-popup-btn bottom-popup-secondary" id="ad-close-btn">Close</button>
+        </div>
+      </div>
     </div>
-    <!-- আরও 98+ tools এভাবে যোগ করো – image URL FTGM-এর মতো, name fit, link placeholder -->
-    <div class="tool-card" onclick="openToolLink('https://example.com/pak-sim')">
-      <img class="tool-icon" src="https://example.com/sim-icon.png" alt="Pak Sim">
-      <div class="tool-name">Pak Sim Data</div>
+
+    <div id="rating-popup-overlay" class="bottom-popup-overlay">
+      <div class="bottom-popup rating-popup">
+        <h2>Rate DEX Tools</h2>
+        <p>How would you rate your experience with DEX Tools?</p>
+        <div class="stars">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <button class="bottom-popup-btn bottom-popup-primary" id="submit-rating-btn">Submit Rating</button>
+      </div>
     </div>
-    <!-- ... full 100+ list, old + new tools like FTGM (e.g., FB Downloader, TikTok Downloader, AI Logo Maker, etc.) -->
+
+    
+    <footer class="footer">
+      <a href="https://whatsapp.com/channel/0029Vb6eVps5kg73BCVOXP0O" target="_blank" class="footer-button" aria-label="Join DEX HACKS WhatsApp Channel">Access Main Channel</a>
+      <div class="watermark">© Developed By Dex Shyam Chaudhari | DEX HACKS </div>
+    </footer>
+
+    
+    <section class="report-bug-container" aria-label="Report Issues">
+      <h3><i class="fas fa-comment-alt"></i> Leave a Comment</h3>
+      <input type="email" id="bug-email" placeholder="Your Email (e.g., example@gmail.com)" required/>
+      <textarea id="bug-message" placeholder="Describe the bug or suggestion..." required></textarea>
+      <button id="send-bug-btn"><i class="fas fa-paper-plane"></i> Submit Your Message</button>
+      <p id="bug-status"></p>
+    </section>
   </div>
 
-  <div class="online-status">
-    <span class="status-dot"></span> 47K <span class="status-dot"></span> System Online
-  </div>
 
-  <button class="access-btn" onclick="window.open('https://chat.whatsapp.com/IOEbmfzOD6d9TCjdX5Fi3B', '_blank')">Access Main Channel</button>
+  <audio id="hackerClick" src="https://n.f-a-k.workers.dev/mixkit-sci-fi-click.wav" preload="auto"></audio>
 
-  <div class="comment-section">
-    <h3>Leave a Comment</h3>
-    <input class="comment-input" type="text" placeholder="Your Email (e.g., example@gmail.com)">
-    <textarea class="comment-input" placeholder="Describe the bug or suggestion."></textarea>
-    <button class="submit-btn">Submit Your Message</button>
-  </div>
 
-  <footer>
-    Developed By Dex Shyam Chaudhari / DEX HACKS
-  </footer>
-</div>
-
-<!-- FTGM-এর মতো Popup Dialog -->
-<div id="channelPopup" class="modal">
-  <div class="modal-content">
-    <h2>NEW CHANNEL LINK</h2>
-    <p>JOIN NOW FOR DAILY NEW TOOLS ⚡</p>
-    <button class="join-btn" onclick="window.open('https://chat.whatsapp.com/IOEbmfzOD6d9TCjdX5Fi3B', '_blank')">Join Now</button>
-    <button class="close-btn" onclick="document.getElementById('channelPopup').style.display='none'">Close</button>
-  </div>
-</div>
-
-<audio id="clickSound" src="mixkit-sci-fi-click.wav" preload="auto"></audio>
-
-<script>
-// Matrix Rain
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-const chars = '01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
-
-function draw() {
-  ctx.fillStyle = 'rgba(10,0,21,0.05)';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = '#00ff9d';
-  ctx.font = fontSize + 'px VT323';
-  for (let i = 0; i < drops.length; i++) {
-    const text = chars.charAt(Math.floor(Math.random() * chars.length));
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  }
-}
-setInterval(draw, 35);
-
-window.addEventListener('resize', () => {
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-});
-
-// Show Popup on Load
-window.addEventListener('load', () => {
-  document.getElementById('channelPopup').style.display = 'flex';
-});
-
-// Tool Link Open with Sound (FTGM-এর মতো কাজ করে)
-function openToolLink(link) {
-  document.getElementById('clickSound').currentTime = 0;
-  document.getElementById('clickSound').play();
-  window.open(link, '_blank'); // তুমি এখানে নতুন link add করো
-}
-
-// Search Filter
-document.getElementById('searchInput').addEventListener('input', e => {
-  const term = e.target.value.toLowerCase();
-  document.querySelectorAll('.tool-card').forEach(card => {
-    card.style.display = card.querySelector('.tool-name').textContent.toLowerCase().includes(term) ? 'block' : 'none';
-  });
-});
-
-// Category Filter
-document.querySelectorAll('.cat-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cat = btn.innerText.toLowerCase();
-    document.querySelectorAll('.tool-card').forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat.includes(cat)) ? 'block' : 'none';
-    });
-  });
-});
-
-// Comment Submit (placeholder – real backend যোগ করতে চাইলে API use করো)
-document.querySelector('.submit-btn').addEventListener('click', () => {
-  alert('Comment Submitted! (Future backend integration)');
-});
-</script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
